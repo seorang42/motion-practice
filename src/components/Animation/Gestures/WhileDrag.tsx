@@ -28,7 +28,17 @@ export default function WhileDrag() {
           dragSnapToOrigin
           dragElastic={0}
           dragMomentum={false}
-          dragTransition={{ bounceStiffness: 600, bounceDamping: 10 }}
+          dragTransition={{
+            bounceStiffness: 600,
+            bounceDamping: 10,
+            // Transition에서 추가
+            modifyTarget: (target) => Math.round(target / 50) * 50,
+            power: 0.2,
+            timeConstant: 200,
+            restDelta: 10,
+            min: 0,
+            max: 100,
+          }}
           dragPropagation
           onDrag={(event, info) => console.log(info.point.x, info.point.y)}
           // onDragStart(event, info), onDragEnd(event, info)
